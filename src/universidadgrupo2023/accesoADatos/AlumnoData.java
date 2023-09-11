@@ -82,7 +82,7 @@ public class AlumnoData {
 
     }
 
-    public Alumno buscarAlumno(int id) {
+    public Alumno buscarAlumnoPorId(int id) {
 
         String sql = "SELECT dni, apellido, nombre, fechaNacimiento FROM alumno WHERE idAlumno=? AND estado=1";
         Alumno alumno = null;
