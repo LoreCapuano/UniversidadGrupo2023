@@ -8,7 +8,7 @@ public class UniversidadGrupo2023 {
 
     
     public static void main(String[] args) {
-        Conexion.getConnection();
+        Conexion.getConexion();
     }
     
 }
