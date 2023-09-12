@@ -74,6 +74,9 @@ public class AlumnoData {
             if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "Alumno eliminado exitosamente");
             }
+            else{
+                JOptionPane.showMessageDialog(null, "No existe un alumno con ese Id");
+            }
 
             ps.close();
         } catch (SQLException ex) {
@@ -129,14 +132,14 @@ public class AlumnoData {
                 alumno.setNombre(rs.getString("nombre"));
                 alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
                 alumno.setEstado(true);
-            } else {
-                JOptionPane.showMessageDialog(null, "No existe un alumno con ese dni");
-            }
+            } 
             ps.close();
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno" + ex.getMessage());
+            
         }
+      
         return alumno;
 
     }
