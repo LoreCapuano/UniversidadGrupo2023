@@ -16,6 +16,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
      */
     public MenuPrincipal() {
         initComponents();
+        this.setLocationRelativeTo(this);
     }
 
     /**
@@ -28,10 +29,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem4 = new javax.swing.JMenuItem();
-        Escritorio = new javax.swing.JDesktopPane();
+        escritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jmiAlumno = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jmiGestionDeAlumnos = new javax.swing.JMenuItem();
         jMenuMateria = new javax.swing.JMenu();
         jmiMateria = new javax.swing.JMenuItem();
         jMenuAdministracion = new javax.swing.JMenu();
@@ -45,21 +46,26 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout EscritorioLayout = new javax.swing.GroupLayout(Escritorio);
-        Escritorio.setLayout(EscritorioLayout);
-        EscritorioLayout.setHorizontalGroup(
-            EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+        escritorio.setLayout(escritorioLayout);
+        escritorioLayout.setHorizontalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 661, Short.MAX_VALUE)
         );
-        EscritorioLayout.setVerticalGroup(
-            EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        escritorioLayout.setVerticalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 425, Short.MAX_VALUE)
         );
 
         jmiAlumno.setText("Alumno");
 
-        jMenuItem1.setText("Formulario de Alumno");
-        jmiAlumno.add(jMenuItem1);
+        jmiGestionDeAlumnos.setText("Formulario de Alumno");
+        jmiGestionDeAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiGestionDeAlumnosActionPerformed(evt);
+            }
+        });
+        jmiAlumno.add(jmiGestionDeAlumnos);
 
         jMenuBar1.add(jmiAlumno);
 
@@ -96,15 +102,24 @@ public class MenuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Escritorio)
+            .addComponent(escritorio)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Escritorio)
+            .addComponent(escritorio)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jmiGestionDeAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiGestionDeAlumnosActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        GestionDeAlumnos gda=new GestionDeAlumnos();
+        escritorio.add(gda);
+        escritorio.moveToFront(gda);
+        gda.setVisible(true);
+    }//GEN-LAST:event_jmiGestionDeAlumnosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,18 +157,23 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane Escritorio;
+    private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenu jMenuAdministracion;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuConsultas;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenu jMenuMateria;
     private javax.swing.JMenu jmiAlumno;
     private javax.swing.JMenuItem jmiAlumnoxMateria;
+    private javax.swing.JMenuItem jmiGestionDeAlumnos;
     private javax.swing.JMenuItem jmiManejoInsc;
     private javax.swing.JMenuItem jmiManipulaNotas;
     private javax.swing.JMenuItem jmiMateria;
     private javax.swing.JMenu jmiSalir;
     // End of variables declaration//GEN-END:variables
+private void cargarAlumnos(){
+    
+}
+
+
 }
