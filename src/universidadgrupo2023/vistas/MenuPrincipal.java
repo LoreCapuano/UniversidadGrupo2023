@@ -72,6 +72,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuMateria.setText("Materia");
 
         jmiMateria.setText("Formulario de Materia");
+        jmiMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiMateriaActionPerformed(evt);
+            }
+        });
         jMenuMateria.add(jmiMateria);
 
         jMenuBar1.add(jMenuMateria);
@@ -79,6 +84,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuAdministracion.setText("Administracion");
 
         jmiManejoInsc.setText("Manejo de Inscripciones");
+        jmiManejoInsc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiManejoInscActionPerformed(evt);
+            }
+        });
         jMenuAdministracion.add(jmiManejoInsc);
 
         jmiManipulaNotas.setText("Manipulacion de notas");
@@ -117,12 +127,32 @@ public class MenuPrincipal extends javax.swing.JFrame {
         escritorio.repaint();
         GestionDeAlumnos gda=new GestionDeAlumnos();
         escritorio.add(gda);
-        escritorio.moveToFront(gda);
         gda.setVisible(true);
+        escritorio.moveToFront(gda);
     }//GEN-LAST:event_jmiGestionDeAlumnosActionPerformed
 
+    private void jmiMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMateriaActionPerformed
+       escritorio.removeAll();
+       escritorio.repaint();
+       GestionDeMaterias gdm=new GestionDeMaterias();
+       escritorio.add(gdm);
+       gdm.setVisible(true);
+       escritorio.moveToFront(gdm);
+       
+    }//GEN-LAST:event_jmiMateriaActionPerformed
+
+    private void jmiManejoInscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiManejoInscActionPerformed
+       escritorio.removeAll();
+       escritorio.repaint();
+       GestionDeInscripciones gdi=new GestionDeInscripciones();
+       escritorio.add(gdi);
+       gdi.setVisible(true);
+       escritorio.moveToFront(gdi);
+    }//GEN-LAST:event_jmiManejoInscActionPerformed
+
     /**
-     * @param args the command line arguments
+     * @param args the command line 
+     * arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -171,9 +201,5 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiMateria;
     private javax.swing.JMenu jmiSalir;
     // End of variables declaration//GEN-END:variables
-private void cargarAlumnos(){
-    
-}
-
 
 }
