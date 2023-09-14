@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import universidadgrupo2023.accesoADatos.AlumnoData;
 import universidadgrupo2023.accesoADatos.Conexion;
 import universidadgrupo2023.entidades.Alumno;
+import universidadgrupo2023.entidades.Inscripcion;
 
 
 public class UniversidadGrupo2023 {

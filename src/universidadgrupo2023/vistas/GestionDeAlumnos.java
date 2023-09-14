@@ -167,6 +167,8 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
                 .addGap(23, 23, 23))
         );
 
+        jDateFechaNacimiento.getAccessibleContext().setAccessibleParent(jDateFechaNacimiento);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
