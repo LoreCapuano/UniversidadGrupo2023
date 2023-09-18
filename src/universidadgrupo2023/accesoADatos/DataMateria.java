@@ -1,25 +1,19 @@
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 package universidadgrupo2023.accesoADatos;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-
 import universidadgrupo2023.entidades.Materia;
-
-import universidadgrupo2023.accesoADatos.Conexion;
-import universidadgrupo2023.entidades.Materia;
-
-
-
 
 /**
  *
@@ -43,11 +37,7 @@ public class DataMateria {
         try {
             PreparedStatement ps = con.prepareStatement(slq, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, materia.getNombre());
-
             ps.setInt(2, materia.getAño());
-
-            ps.setInt(2, materia.getAño());
-
             ps.setBoolean(3, materia.isEstado());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
@@ -76,11 +66,7 @@ public class DataMateria {
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, materia.getNombre());
-
             ps.setInt(2, materia.getAño());
-
-            ps.setInt(2, materia.getAño());
-
             ps.setBoolean(3, true);
             ps.setInt(4, materia.getIdMateria());
             int filas = ps.executeUpdate();
@@ -136,11 +122,7 @@ public class DataMateria {
                 materia = new Materia();
                 materia.setIdMateria(id);
                 materia.setNombre(rs.getString("nombre"));
-
                 materia.setAño(rs.getInt("año"));
-
-                materia.setAño(rs.getInt("año"));
-
                 materia.setEstado(true);
 
             } else {
@@ -157,7 +139,6 @@ public class DataMateria {
 
     }
 //Listar Maerias
-
     public List<Materia> ListarMaterias() {
 
         String slq = "SELECT idMateria, nombre, año FROM materia WHERE estado = 1";
@@ -173,16 +154,12 @@ public class DataMateria {
                 Materia materia = new Materia();
                 materia.setIdMateria(rs.getInt("idMateria"));
                 materia.setNombre(rs.getString("nombre"));
-
                 materia.setAño(rs.getInt("año"));
-
-                materia.setAño(rs.getInt("año"));
-
                 materia.setEstado(true);
                 Materias.add(materia);
 
             }
-
+            
             ps.close();
 
         } catch (SQLException ex) {

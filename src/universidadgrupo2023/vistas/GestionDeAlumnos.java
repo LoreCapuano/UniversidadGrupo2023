@@ -1,22 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package universidadgrupo2023.vistas;
 
+import java.sql.Date;
 import universidadgrupo2023.accesoADatos.AlumnoData;
 import universidadgrupo2023.entidades.Alumno;
 
-/**
- *
- * @author Admin
- */
+
 public class GestionDeAlumnos extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form GestionDeAlumnos
-     */
     public GestionDeAlumnos() {
         initComponents();
     }
@@ -46,11 +37,16 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
         jTdocumento = new javax.swing.JTextField();
         jTapellido = new javax.swing.JTextField();
         jTnombre = new javax.swing.JTextField();
-        jBestado = new javax.swing.JRadioButton();
         jDateFechaNacimiento = new com.toedter.calendar.JDateChooser();
+        jCBestado = new javax.swing.JCheckBox();
+        jTestado = new javax.swing.JTextField();
 
         jTextField4.setText("jTextField4");
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
         setTitle("Alumnos");
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 102));
@@ -111,7 +107,6 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel6)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jBestado)
                             .addComponent(jTdocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -123,7 +118,11 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(jBguardar)))
                                 .addGap(29, 29, 29)
-                                .addComponent(jBsalir)))))
+                                .addComponent(jBsalir))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jCBestado)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTestado, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(126, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -150,15 +149,20 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jTnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jBestado))
-                .addGap(19, 19, 19)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jCBestado)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jTestado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6)
                     .addComponent(jDateFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBnuevo)
                     .addComponent(jBeliminar)
@@ -189,16 +193,24 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
         {
             jTapellido.setText(alumnoEncontrado.getApellido());
             jTnombre.setText(alumnoEncontrado.getNombre());
+//            jDateFechaNacimiento.setDate(Date.valueOf(alumnoEncontrado.getFechaNacimiento()));
+//            jCBestado.setSelected(alumnoEncontrado.isEstado());
+//
+//            if (alumnoEncontrado.isEstado()) {
+//                jTestado.setText("Activo");
+//            } else {
+//                jTestado.setText("Inactivo");
+//            }
     }//GEN-LAST:event_jBbuscarActionPerformed
 
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBbuscar;
     private javax.swing.JButton jBeliminar;
-    private javax.swing.JRadioButton jBestado;
     private javax.swing.JButton jBguardar;
     private javax.swing.JButton jBnuevo;
     private javax.swing.JButton jBsalir;
+    private javax.swing.JCheckBox jCBestado;
     private com.toedter.calendar.JDateChooser jDateFechaNacimiento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -209,6 +221,7 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTapellido;
     private javax.swing.JTextField jTdocumento;
+    private javax.swing.JTextField jTestado;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTnombre;
     // End of variables declaration//GEN-END:variables
