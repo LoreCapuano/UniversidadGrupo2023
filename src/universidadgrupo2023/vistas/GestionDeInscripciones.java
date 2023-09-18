@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package universidadgrupo2023.vistas;
 
 import javax.swing.SwingConstants;
@@ -14,10 +10,7 @@ import universidadgrupo2023.accesoADatos.inscripData;
 import universidadgrupo2023.entidades.Alumno;
 import universidadgrupo2023.entidades.Materia;
 
-/**
- *
- * @author Admin
- */
+
 public class GestionDeInscripciones extends javax.swing.JInternalFrame {
 
     private DefaultTableModel modelo = new DefaultTableModel();
