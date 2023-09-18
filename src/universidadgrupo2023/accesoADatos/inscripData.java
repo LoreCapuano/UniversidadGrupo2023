@@ -12,24 +12,24 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import universidadgrupo2023.entidades.Alumno;
 import universidadgrupo2023.entidades.Inscripcion;
 import universidadgrupo2023.entidades.Materia;
+import universidadgrupo2023.accesoADatos.AlumnoData;
+
+
 
 /**
  *
  * @author matias
  */
-public class InscripcionData {
-
+public class inscripData {
     private Connection con = null;
-    private MateriaData matdata = new MateriaData();
+    private DataMateria matdata = new DataMateria();
     private AlumnoData aludata = new AlumnoData();
 
-    public InscripcionData() {
+    public inscripData() {
         con = Conexion.getConexion();
 
     }
@@ -58,7 +58,7 @@ public class InscripcionData {
     }
 
     public List<Inscripcion> obtenerInscripciones() {
-        List<Inscripcion> inscripciones = new ArrayList();
+        ArrayList<Inscripcion> inscripciones = new ArrayList();
         String sql = "SELECT * FROM Inscripcion";
         try {
 
@@ -68,10 +68,9 @@ public class InscripcionData {
                 Inscripcion inscripto = new Inscripcion();
                 inscripto.setIdInscripcion(rs.getInt("idInscripcion"));
                 Alumno nombre = aludata.buscarAlumnoPorId(rs.getInt("idAlumno"));
-//               Materia nombremat ;
+                Materia nueva = matdata.buscarMateria(rs.getInt("idMateria"));
                 inscripto.setAlumno(nombre);
-//                inscripto.setMateria(nombremat);
-
+                inscripto.setMateria(nueva);
                 inscripto.setNota(rs.getDouble("nota"));
                 inscripciones.add(inscripto);
             }
@@ -125,7 +124,7 @@ public class InscripcionData {
                 materia = new Materia();
                 materia.setIdMateria(rs.getInt("idMateria"));
                 materia.setNombre(rs.getString("nombre"));
-                materia.setAnio(rs.getInt("año"));
+                materia.setAño(rs.getInt("año"));
                 Materias.add(materia);
 
             }
@@ -152,7 +151,7 @@ public class InscripcionData {
                 Materia material = new Materia();
                 material.setIdMateria(rs.getInt("idMateria"));
                 material.setNombre(rs.getString("nombre"));
-                material.setAnio(rs.getInt("año"));
+                material.setAño(rs.getInt("año"));
                 materia.add(material);
 
             }
@@ -201,7 +200,8 @@ public class InscripcionData {
    }
 
         public List<Alumno> obtenerAlumnosMateria(int idMateria) {
-        ArrayList<Alumno> alumnos = new ArrayList();
+            
+            ArrayList<Alumno> alumnos = new ArrayList();
         String sql = "SELECT a.idAlumno, dni, nombre, apellido, fechaNacimiento, estado"
                 + "FROM inscripcion i, alumno a WHERE i.idAlumno = a.idAlumno AND idMateria = ? AND a.estado = 1";
 
@@ -224,8 +224,5 @@ public class InscripcionData {
             JOptionPane.showMessageDialog(null, "error en base de datos ");
         }
         return alumnos;
-    }
+        }
 }
-
-
-

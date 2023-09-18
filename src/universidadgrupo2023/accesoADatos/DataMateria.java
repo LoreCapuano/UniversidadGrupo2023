@@ -1,4 +1,9 @@
-package universidadgrupo23.Modelo;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package universidadgrupo2023.accesoADatos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,32 +12,33 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import universidadgrupo23.Modelo.Materia;
+import universidadgrupo2023.entidades.Materia;
 
-public class MateriaData {
-
+/**
+ *
+ * @author matias
+ */
+public class DataMateria {
     private Connection con = null;
 
-    public MateriaData() {
+    public DataMateria() {
 
-        con = conexion.getConexion();
+        con = Conexion.getConexion();
 
     }
 
     //manejo en CRUD = CREATE, READ, UPDATE, DELETE
     // CREATE
-    public void guardaralumno(Materia materia) {
+    public void guardarMateria(Materia materia) {
 
-        String slq = "INSERT INTO materia (nombre, anio, estado) VALUES (?,?,?)";
+        String slq = "INSERT INTO materia (nombre, año, estado) VALUES (?,?,?)";
 
         try {
             PreparedStatement ps = con.prepareStatement(slq, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, materia.getNombre());
-            ps.setInt(2, materia.getAnioMateria());
-            ps.setBoolean(3, materia.isActivo());
+            ps.setInt(2, materia.getAño());
+            ps.setBoolean(3, materia.isEstado());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
 
@@ -55,12 +61,12 @@ public class MateriaData {
 
     public void modificarMateria(Materia materia) {
 
-        String sql = "UPDATE materia SET nombre=?, anio=?, estado=? WHERE idMateria=?";
+        String sql = "UPDATE materia SET nombre=?, año=?, estado=? WHERE idMateria=?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, materia.getNombre());
-            ps.setInt(2, materia.getAnioMateria());
+            ps.setInt(2, materia.getAño());
             ps.setBoolean(3, true);
             ps.setInt(4, materia.getIdMateria());
             int filas = ps.executeUpdate();
@@ -81,7 +87,7 @@ public class MateriaData {
 
     //DELETE
     public void eliminarMateria(int id) {
-        String sql = "DELETE FROM materia WHERE idMateria=?";
+        String sql = "UPDATE  materia SET estado = 0 WHERE idMateria=?";
         PreparedStatement ps;
         try {
             ps = con.prepareStatement(sql);
@@ -103,7 +109,7 @@ public class MateriaData {
     //READ
     public Materia buscarMateria(int id) {
 
-        String slq = "SELECT idMateria, nombre, anio FROM materia WHERE idMateria = ? AND estado = 1";
+        String slq = "SELECT idMateria, nombre, año FROM materia WHERE idMateria = ? AND estado = 1";
         Materia materia = null;
 
         try {
@@ -116,8 +122,8 @@ public class MateriaData {
                 materia = new Materia();
                 materia.setIdMateria(id);
                 materia.setNombre(rs.getString("nombre"));
-                materia.setAnioMateria(rs.getInt("anio"));
-                materia.setActivo(true);
+                materia.setAño(rs.getInt("año"));
+                materia.setEstado(true);
 
             } else {
                 JOptionPane.showMessageDialog(null, "No existe la matgeria");
@@ -135,7 +141,7 @@ public class MateriaData {
 //Listar Maerias
     public List<Materia> ListarMaterias() {
 
-        String slq = "SELECT idMateria, nombre, anio FROM materia WHERE estado = 1";
+        String slq = "SELECT idMateria, nombre, año FROM materia WHERE estado = 1";
 
         ArrayList<Materia> Materias = new ArrayList<>();
 
@@ -148,8 +154,8 @@ public class MateriaData {
                 Materia materia = new Materia();
                 materia.setIdMateria(rs.getInt("idMateria"));
                 materia.setNombre(rs.getString("nombre"));
-                materia.setAnioMateria(rs.getInt("anio"));
-                materia.setActivo(true);
+                materia.setAño(rs.getInt("año"));
+                materia.setEstado(true);
                 Materias.add(materia);
 
             }
@@ -162,5 +168,4 @@ public class MateriaData {
 
         return Materias;
     }
-
 }
