@@ -70,7 +70,7 @@ public class UniversidadGrupo2023 {
 //        MATERIADATA-MATERIADATA-MATERIADATA
 //        Conexion.getConexion();
 //        guardarMateria
-        Materia materia=new Materia ("laboratorio-1",1 ,true);
+//        Materia materia=new Materia ("laboratorio-1",1 ,true);
 //        MateriaData mate=new MateriaData();
 //        mate.guardarMateria(materia);
 //        Materia materi=new Materia ("conatduria-1",1 ,true);
@@ -108,12 +108,12 @@ public class UniversidadGrupo2023 {
 //   *******************************************
 //INSCRIPCIONDATA-INSCRIPCIONDATA-
 //    Conexion.getConexion();
-   AlumnoData ad= new AlumnoData();
-   DataMateria md = new DataMateria();
-   Inscripcion insc = new Inscripcion(4,ad.buscarAlumnoPorId(1),md.buscarMateria(10));
-   
-   inscripData nueva= new inscripData();
-   nueva.guardarInscripciones(insc);
+//   AlumnoData ad= new AlumnoData();
+//   DataMateria md = new DataMateria();
+//   Inscripcion insc = new Inscripcion(8,ad.buscarAlumnoPorId(1),md.buscarMateria(10));
+//   
+//   inscripData nueva= new inscripData();
+//   nueva.guardarInscripciones(insc);
 
 }
 }
