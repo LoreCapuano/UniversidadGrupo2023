@@ -1,4 +1,3 @@
-
 package universidadgrupo2023.accesoADatos;
 
 import java.sql.Connection;
@@ -9,12 +8,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import javax.swing.JOptionPane;
 //import for java.util.list;
 import universidadgrupo2023.entidades.Alumno;
 
 public class AlumnoData {
+
+    public void mensaje(String mensaje) {
+        JOptionPane.showMessageDialog(null, mensaje);
+    }
 
     private Connection con = null;
 
@@ -29,7 +31,7 @@ public class AlumnoData {
         try {
             PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             ps.setInt(1, alumno.getDni());
-            ps.setString(2, alumno.getApellido());            
+            ps.setString(2, alumno.getApellido());
             ps.setString(3, alumno.getNombre());
             ps.setDate(4, Date.valueOf(alumno.getFechaNacimiento()));
             ps.setBoolean(5, alumno.isEstado());
@@ -75,10 +77,6 @@ public class AlumnoData {
             if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "Alumno eliminado exitosamente");
             }
-            else{
-                JOptionPane.showMessageDialog(null, "No existe un alumno con ese Id");
-            }
-
             ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno" + ex.getMessage());
@@ -102,7 +100,7 @@ public class AlumnoData {
                 alumno.setApellido(rs.getString("apellido"));
                 alumno.setNombre(rs.getString("nombre"));
                 alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
-                alumno.setEstado(true);
+                alumno.setEstado(rs.getBoolean("estado"));
             } else {
                 JOptionPane.showMessageDialog(null, "No existe un alumno con ese Id");
             }
@@ -110,6 +108,8 @@ public class AlumnoData {
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno" + ex.getMessage());
+        }catch (NullPointerException npe){
+            mensaje ("Ingrese otro dni "+ npe.getMessage());
         }
         return alumno;
 
@@ -117,7 +117,7 @@ public class AlumnoData {
 
     public Alumno buscarAlumnoPorDni(int dni) {
 
-        String sql = "SELECT IdAlumno,dni, apellido, nombre, fechaNacimiento FROM alumno WHERE dni=? AND estado=1";
+        String sql = "SELECT IdAlumno,dni, apellido, nombre, fechaNacimiento, estado FROM alumno WHERE dni=? ";
         Alumno alumno = null;
 
         try {
@@ -132,15 +132,16 @@ public class AlumnoData {
                 alumno.setApellido(rs.getString("apellido"));
                 alumno.setNombre(rs.getString("nombre"));
                 alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
-                alumno.setEstado(true);
-            } 
+                alumno.setEstado(rs.getBoolean("estado"));
+            }else{
+                //JOptionPane.showMessageDialog(null, "No existe ese alumno");
+            }
             ps.close();
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno" + ex.getMessage());
-            
         }
-      
+
         return alumno;
 
     }
@@ -162,7 +163,7 @@ public class AlumnoData {
                 alumno.setNombre(rs.getString("nombre"));
                 alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
                 alumno.setEstado(true);
-                
+
                 alumnos.add(alumno);
 
             }

@@ -251,12 +251,13 @@ public void cargarCombo(){
 //    jCBoxalumno.addItem(ad.obtenerAlumnosMateria(WIDTH));
 //   
 AlumnoData ad = new AlumnoData();
+
 for(Alumno listarAlumno: ad.listarAlumnos()){
  
     jCBoxalumno.addItem(listarAlumno);
     
     
 }
-    
+   jCBoxalumno.setSelectedIndex(-1); 
 }
 }

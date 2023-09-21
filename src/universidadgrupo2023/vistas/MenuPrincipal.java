@@ -5,18 +5,17 @@
  */
 package universidadgrupo2023.vistas;
 
-/**
- *
- * @author Admin
- */
+import universidadgrupo2023.accesoADatos.AlumnoData;
+
+
 public class MenuPrincipal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MenuPrincipal
-     */
+   private AlumnoData ad;
+   
     public MenuPrincipal() {
         initComponents();
         this.setLocationRelativeTo(this);
+        ad=new AlumnoData();
     }
 
     /**
@@ -150,10 +149,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
        escritorio.moveToFront(gdi);
     }//GEN-LAST:event_jmiManejoInscActionPerformed
 
-    /**
-     * @param args the command line 
-     * arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
