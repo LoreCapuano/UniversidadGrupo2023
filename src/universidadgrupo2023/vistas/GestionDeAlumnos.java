@@ -1,15 +1,12 @@
-
 package universidadgrupo2023.vistas;
 
 import java.sql.Date;
-<<<<<<< Updated upstream
-=======
+
 import java.time.ZoneId;
 import javax.swing.JOptionPane;
->>>>>>> Stashed changes
+
 import universidadgrupo2023.accesoADatos.AlumnoData;
 import universidadgrupo2023.entidades.Alumno;
-
 
 public class GestionDeAlumnos extends javax.swing.JInternalFrame {
 
@@ -280,21 +277,21 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarActionPerformed
-<<<<<<< Updated upstream
-        AlumnoData alu = new AlumnoData();
-        Alumno alumnoEncontrado = alu.buscarAlumnoPorDni(Integer.parseInt(jTdocumento.getText()));
-        {
-            jTapellido.setText(alumnoEncontrado.getApellido());
-            jTnombre.setText(alumnoEncontrado.getNombre());
-//            jDateFechaNacimiento.setDate(Date.valueOf(alumnoEncontrado.getFechaNacimiento()));
-//            jCBestado.setSelected(alumnoEncontrado.isEstado());
-//
-//            if (alumnoEncontrado.isEstado()) {
-//                jTestado.setText("Activo");
-//            } else {
-//                jTestado.setText("Inactivo");
-//            }
-=======
+
+//        AlumnoData alu = new AlumnoData();
+//        Alumno alumnoEncontrado = alu.buscarAlumnoPorDni(Integer.parseInt(jTdocumento.getText()));
+//        {
+//            jTapellido.setText(alumnoEncontrado.getApellido());
+//            jTnombre.setText(alumnoEncontrado.getNombre());
+////            jDateFechaNacimiento.setDate(Date.valueOf(alumnoEncontrado.getFechaNacimiento()));
+////            jCBestado.setSelected(alumnoEncontrado.isEstado());
+////
+////            if (alumnoEncontrado.isEstado()) {
+////                jTestado.setText("Activo");
+////            } else {
+////                jTestado.setText("Inactivo");
+////            }
+//=======
         try {
             AlumnoData alu = new AlumnoData();
             Alumno alumnoEncontrado = alu.buscarAlumnoPorDni(Integer.parseInt(jTdocumento.getText()));
@@ -311,20 +308,19 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
                 } else {
                     jCBestado.setSelected(false);
                     jTestado.setText("inactivo");
-                    
-                jDateFechaNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();    
+
+                    jDateFechaNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
                 }
-            }else {
+            } else {
                 JOptionPane.showMessageDialog(null, "No existe un alumno con ese DNI");
             }
         } catch (NumberFormatException nfe) {
-            JOptionPane.showMessageDialog(null, "ERROR, debe ingresar un numero de DNI" );
-        
+            JOptionPane.showMessageDialog(null, "ERROR, debe ingresar un numero de DNI");
+
         }
 
 
->>>>>>> Stashed changes
     }//GEN-LAST:event_jBbuscarActionPerformed
     public void limpiar() {
         jTdocumento.setText(null);
@@ -336,7 +332,7 @@ public class GestionDeAlumnos extends javax.swing.JInternalFrame {
 
     }
     private void jBnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnuevoActionPerformed
-       // limpiar();
+        // limpiar();
         AlumnoData alu = new AlumnoData();
         Alumno alumno = new Alumno(Integer.parseInt(jTdocumento.getText()), jTapellido.getText(), jTnombre.getText(), jDateFechaNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), jCBestado.isSelected());
         alu.guardarAlumno(alumno);
